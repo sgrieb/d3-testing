@@ -15,7 +15,8 @@ function _chart(d3,data,invalidation)
 
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id))
+      // use nodes distance to increase link length
+      .force("link", d3.forceLink(links).distance(function(d) {return d.distance;}).id(d => d.id))
       .force("charge", d3.forceManyBody())
       .force("x", d3.forceX())
       .force("y", d3.forceY());
@@ -45,6 +46,7 @@ function _chart(d3,data,invalidation)
       .attr("r", 5)
       .attr("fill", d => color(d.group));
 
+  // this shows the title on rollover
   node.append("title")
       .text(d => d.id);
 

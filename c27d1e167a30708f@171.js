@@ -39,7 +39,7 @@ function _chart(d3,data,invalidation)
       .attr("viewBox", [-width / 2, -height / 2, width, height])
       .attr("style", "max-width: 100%; height: auto;");
 
-  // Add a line for each link, and a circle for each node.
+  // Add a line for each link
   const link = svg.append("g")
       .attr("stroke", "#999")
       .attr("stroke-opacity", 0.6)
@@ -48,14 +48,23 @@ function _chart(d3,data,invalidation)
     .join("line")
       .attr("stroke-width", d => Math.sqrt(d.value));
 
-  const node = svg.append("g")
-      .attr("stroke", "#fff")
-      .attr("stroke-width", 1.5)
-    .selectAll("circle")
-    .data(nodes)
-    .join("circle")
-      .attr("r", d => d.size*multiplier)
-      .attr("fill", d => d.color);
+  var node = svg.selectAll(".node")
+      .data(nodes)
+    .enter().append("g")
+      .attr("class", "node")
+
+  node.append("text")
+      .attr("dx", 12)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.id });
+
+  const circle = node
+    .append("circle")
+    .attr("r",(d) => {
+      console.log(`${d.id}`)
+      return d.size
+    })
+    .attr("fill", d => d.color);
 
   // this shows the title on rollover
   node.append("title")
@@ -75,9 +84,7 @@ function _chart(d3,data,invalidation)
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
 
-    node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
 
   // Reheat the simulation when drag starts, and fix the subject position.

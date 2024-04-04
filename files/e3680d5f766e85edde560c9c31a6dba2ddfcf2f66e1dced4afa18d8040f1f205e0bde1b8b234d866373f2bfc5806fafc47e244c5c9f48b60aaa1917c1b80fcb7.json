@@ -3,25 +3,25 @@
         {
             "id": "Phil Murphy",
             "group": "Democrat",
-            "size": 10,
+            "size": 20,
             "color": "#4169e1"
         },
         {
             "id": "Diane Gutierrez-Scaccetti",
             "group": "Democrat",
-            "size": 5,
+            "size": 10,
             "color": "#4169e1"
         },
         {
             "id": "Greg Abbot",
             "group": "Republican",
-            "size": 10,
+            "size": 20,
             "color": "#FF0000"
         },
         {
             "id": "Ron Lucey",
             "group": "Republican",
-            "size": 5,
+            "size": 10,
             "color": "#FF0000"
         }
     ],

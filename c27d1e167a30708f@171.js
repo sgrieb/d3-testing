@@ -13,11 +13,21 @@ function _chart(d3,data,invalidation)
   const links = data.links.map(d => ({...d}));
   const nodes = data.nodes.map(d => ({...d}));
 
+  const multiplier = 5;
+
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       // use nodes distance to increase link length
-      .force("link", d3.forceLink(links).distance(function(d) {return d.distance;}).id(d => d.id))
-      .force("charge", d3.forceManyBody())
+      .force("link", d3.forceLink(links).distance(function(d) {return d.distance*multiplier;}).id(d => d.id).strength(function(link) {   
+        if (link.source.group == link.source.group) {
+          return 1; // stronger link for links within a group
+        }
+        else {
+          return 0.1; // weaker links for links across groups
+        }   
+        }))
+      .force("charge", d3.forceManyBody().strength(-4000))
+      .force("collide", d3.forceCollide(d => d.size*multiplier).iterations(10))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
@@ -43,7 +53,7 @@ function _chart(d3,data,invalidation)
     .selectAll("circle")
     .data(nodes)
     .join("circle")
-      .attr("r", d => d.size)
+      .attr("r", d => d.size*multiplier)
       .attr("fill", d => color(d.group));
 
   // this shows the title on rollover

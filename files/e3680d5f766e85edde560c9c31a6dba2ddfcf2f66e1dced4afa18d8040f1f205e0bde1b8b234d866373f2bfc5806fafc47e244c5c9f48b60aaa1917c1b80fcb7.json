@@ -3,11 +3,21 @@
         {
             "id": "Phil Murphy",
             "group": "Democrat",
-            "size": 20
+            "size": 10
         },
         {
             "id": "Diane Gutierrez-Scaccetti",
             "group": "Democrat",
+            "size": 5
+        },
+        {
+            "id": "Greg Abbot",
+            "group": "Republican",
+            "size": 10
+        },
+        {
+            "id": "Ron Lucey",
+            "group": "Republican",
             "size": 5
         }
     ],
@@ -16,7 +26,13 @@
             "source": "Phil Murphy",
             "target": "Diane Gutierrez-Scaccetti",
             "value": 2,
-            "distance": 200
+            "distance": 20
+        },
+        {
+            "source": "Greg Abbot",
+            "target": "Ron Lucey",
+            "value": 2,
+            "distance": 20
         }
     ]
 }

@@ -26,6 +26,7 @@ function _chart(d3,data,invalidation)
           return 0.1; // weaker links for links across groups
         }   
         }))
+      // this negative strength spreads out the groups from the center
       .force("charge", d3.forceManyBody().strength(-4000))
       .force("collide", d3.forceCollide(d => d.size*multiplier).iterations(10))
       .force("x", d3.forceX())
@@ -54,7 +55,7 @@ function _chart(d3,data,invalidation)
     .data(nodes)
     .join("circle")
       .attr("r", d => d.size*multiplier)
-      .attr("fill", d => color(d.group));
+      .attr("fill", d => d.color);
 
   // this shows the title on rollover
   node.append("title")

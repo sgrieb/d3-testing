@@ -43,7 +43,7 @@ function _chart(d3,data,invalidation)
     .selectAll("circle")
     .data(nodes)
     .join("circle")
-      .attr("r", 5)
+      .attr("r", d => d.size)
       .attr("fill", d => color(d.group));
 
   // this shows the title on rollover

@@ -1,18 +1,20 @@
 {
     "nodes": [
         {
-            "id": "109-294-662-661-65X",
-            "group": "Citing Patents"
+            "id": "Phil Murphy",
+            "group": "Democrat",
+            "size": 20
         },
         {
-            "id": "074-937-457-594-345",
-            "group": "Citing Patents"
+            "id": "Diane Gutierrez-Scaccetti",
+            "group": "Democrat",
+            "size": 5
         }
     ],
     "links": [
         {
-            "source": "074-937-457-594-345",
-            "target": "109-294-662-661-65X",
+            "source": "Phil Murphy",
+            "target": "Diane Gutierrez-Scaccetti",
             "value": 2,
             "distance": 200
         }

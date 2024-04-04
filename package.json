@@ -1,0 +1,14 @@
+{
+  "name": "c27d1e167a30708f",
+  "main": "c27d1e167a30708f@171.js",
+  "version": "171.0.0",
+  "homepage": "https://observablehq.com/d/c27d1e167a30708f",
+  "author": {
+    "name": "Test",
+    "url": "https://observablehq.com/@sg-test"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
